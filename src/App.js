@@ -9,6 +9,7 @@ import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 // home pages
 const HomeFashionThree = lazy(() => import("./pages/home/HomeFashionThree"));
+const MainPage = lazy(() => import("./aaacmm/pages/MainPage"));
 
 // shop pages
 const ShopGridFullWidth = lazy(() => import("./pages/shop/ShopGridFullWidth"));
@@ -72,12 +73,16 @@ const App = (props) => {
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/"}
-                  component={HomeFashionThree}
+                  component={MainPage}
                 />
                 {/* Homepages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/home-fashion-three"}
                   component={HomeFashionThree}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/main"}
+                  component={MainPage}
                 />
 
                 {/* Shop pages */}

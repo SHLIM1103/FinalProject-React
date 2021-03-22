@@ -3,7 +3,6 @@ import React, { Fragment, useState, useEffect } from "react";
 import Swiper from "react-id-swiper";
 import { getProductCartQuantity } from "../../helpers/product";
 import { Modal } from "react-bootstrap";
-import Rating from "./sub-components/ProductRating";
 import { connect } from "react-redux";
 
 function ProductModal(props) {
@@ -153,15 +152,6 @@ function ProductModal(props) {
                     <span>{currency.currencySymbol + finalproductprice} </span>
                   )}
                 </div>
-                {product.rating && product.rating > 0 ? (
-                  <div className="pro-details-rating-wrap">
-                    <div className="pro-details-rating">
-                      <Rating ratingValue={product.rating} />
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
                 <div className="pro-details-list">
                   <p>{product.shortDescription}</p>
                 </div>

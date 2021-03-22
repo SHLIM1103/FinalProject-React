@@ -1,4 +1,4 @@
-import React, { useState, Fragment,useEffect } from 'react'
+import React, { Fragment } from 'react'
 import MetaTags from "react-meta-tags"
 import LayoutOne from "../../layouts/LayoutOne"
 import FeatureIconTwo from "../../wrappers/feature-icon/FeatureIconTwo"

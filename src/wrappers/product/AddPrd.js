@@ -1,5 +1,4 @@
-/* 제품 추가 모듈 */
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 
@@ -22,6 +21,7 @@ const AddPrd = () => {
         })
         .catch(error => {
             alert(`제품 등록 실패`)
+            throw error
         })
     }
 

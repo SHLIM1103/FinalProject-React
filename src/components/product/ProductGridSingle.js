@@ -5,7 +5,6 @@ import { useToasts } from "react-toast-notifications"
 import { getDiscountPrice } from "../../helpers/product"
 import Rating from "./sub-components/ProductRating"
 import ProductModal from "./ProductModal"
-import axios from 'axios'
 
 const ProductGridSingle = ({
   product,
