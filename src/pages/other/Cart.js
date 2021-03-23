@@ -5,7 +5,6 @@ import { useToasts } from "react-toast-notifications";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
-import { getDiscountPrice } from "../../helpers/product";
 import {
   addToCart,
   decreaseQuantity,
@@ -33,11 +32,7 @@ const Cart = ({
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Cart</title>
-        <meta
-          name="description"
-          content="Cart page of flone react minimalist eCommerce template."
-        />
+        <title>ZER0 SHOP | Cart</title>
       </MetaTags>
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
@@ -69,22 +64,7 @@ const Cart = ({
                         </thead>
                         <tbody>
                           {cartItems.map((cartItem, key) => {
-                            const discountedPrice = getDiscountPrice(
-                              cartItem.price,
-                              cartItem.discount
-                            );
-                            const finalProductPrice = (
-                              cartItem.price * currency.currencyRate
-                            ).toFixed(2);
-                            const finalDiscountedPrice = (
-                              discountedPrice * currency.currencyRate
-                            ).toFixed(2);
-
-                            discountedPrice != null
-                              ? (cartTotalPrice +=
-                                  finalDiscountedPrice * cartItem.quantity)
-                              : (cartTotalPrice +=
-                                  finalProductPrice * cartItem.quantity);
+                              cartTotalPrice += cartItem.prdPrice * cartItem.quantity
                             return (
                               <tr key={key}>
                                 <td className="product-thumbnail">
@@ -92,14 +72,14 @@ const Cart = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.prdId
                                     }
                                   >
                                     <img
                                       className="img-fluid"
                                       src={
                                         process.env.PUBLIC_URL +
-                                        cartItem.image[0]
+                                        cartItem.prdImg
                                       }
                                       alt=""
                                     />
@@ -111,44 +91,17 @@ const Cart = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.prdId
                                     }
                                   >
-                                    {cartItem.name}
+                                    {cartItem.prdName}
                                   </Link>
-                                  {cartItem.selectedProductColor &&
-                                  cartItem.selectedProductSize ? (
-                                    <div className="cart-item-variation">
-                                      <span>
-                                        Color: {cartItem.selectedProductColor}
-                                      </span>
-                                      <span>
-                                        Size: {cartItem.selectedProductSize}
-                                      </span>
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
                                 </td>
 
                                 <td className="product-price-cart">
-                                  {discountedPrice !== null ? (
-                                    <Fragment>
-                                      <span className="amount old">
-                                        {currency.currencySymbol +
-                                          finalProductPrice}
-                                      </span>
-                                      <span className="amount">
-                                        {currency.currencySymbol +
-                                          finalDiscountedPrice}
-                                      </span>
-                                    </Fragment>
-                                  ) : (
                                     <span className="amount">
-                                      {currency.currencySymbol +
-                                        finalProductPrice}
+                                      {currency.currencySymbol + cartItem.prdPrice}
                                     </span>
-                                  )}
                                 </td>
 
                                 <td className="product-quantity">
@@ -180,11 +133,7 @@ const Cart = ({
                                         cartItem !== undefined &&
                                         cartItem.quantity &&
                                         cartItem.quantity >=
-                                          cartItemStock(
-                                            cartItem,
-                                            cartItem.selectedProductColor,
-                                            cartItem.selectedProductSize
-                                          )
+                                          cartItemStock(cartItem)
                                       }
                                     >
                                       +
@@ -192,15 +141,7 @@ const Cart = ({
                                   </div>
                                 </td>
                                 <td className="product-subtotal">
-                                  {discountedPrice !== null
-                                    ? currency.currencySymbol +
-                                      (
-                                        finalDiscountedPrice * cartItem.quantity
-                                      ).toFixed(2)
-                                    : currency.currencySymbol +
-                                      (
-                                        finalProductPrice * cartItem.quantity
-                                      ).toFixed(2)}
+                                  {cartItem.prdPrice * cartItem.quantity}
                                 </td>
 
                                 <td className="product-remove">
@@ -225,7 +166,7 @@ const Cart = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                          to={process.env.PUBLIC_URL + "/product-all"}
                         >
                           Continue Shopping
                         </Link>
@@ -240,50 +181,6 @@ const Cart = ({
                 </div>
 
                 <div className="row">
-                  <div className="col-lg-4 col-md-6">
-                    <div className="cart-tax">
-                      <div className="title-wrap">
-                        <h4 className="cart-bottom-title section-bg-gray">
-                          Estimate Shipping And Tax
-                        </h4>
-                      </div>
-                      <div className="tax-wrapper">
-                        <p>
-                          Enter your destination to get a shipping estimate.
-                        </p>
-                        <div className="tax-select-wrapper">
-                          <div className="tax-select">
-                            <label>* Country</label>
-                            <select className="email s-email s-wid">
-                              <option>Bangladesh</option>
-                              <option>Albania</option>
-                              <option>Åland Islands</option>
-                              <option>Afghanistan</option>
-                              <option>Belgium</option>
-                            </select>
-                          </div>
-                          <div className="tax-select">
-                            <label>* Region / State</label>
-                            <select className="email s-email s-wid">
-                              <option>Bangladesh</option>
-                              <option>Albania</option>
-                              <option>Åland Islands</option>
-                              <option>Afghanistan</option>
-                              <option>Belgium</option>
-                            </select>
-                          </div>
-                          <div className="tax-select">
-                            <label>* Zip/Postal Code</label>
-                            <input type="text" />
-                          </div>
-                          <button className="cart-btn-2" type="submit">
-                            Get A Quote
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   <div className="col-lg-4 col-md-6">
                     <div className="discount-code-wrapper">
                       <div className="title-wrap">
@@ -307,20 +204,45 @@ const Cart = ({
                     <div className="grand-totall">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gary-cart">
-                          Cart Total
+                          tmp
                         </h4>
                       </div>
                       <h5>
-                        Total products{" "}
+                          tmp {" "}
+                          <span>
+                            tmp {" "}
+                          </span>
+                      </h5> 
+                      <h4 className="grand-totall-title">
+                        tmp
                         <span>
-                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                          tmp
+                        </span>
+                      </h4>
+                      <Link to={process.env.PUBLIC_URL + "/checkout"}>
+                        button
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-4 col-md-12">
+                    <div className="grand-totall">
+                      <div className="title-wrap">
+                        <h4 className="cart-bottom-title section-bg-gary-cart">
+                          tmp
+                          </h4>
+                        </div>
+                        <h5>
+                          배송료{" "}
+                        <span>
+                          {"3,000원"}
+                          {/* (usrCity !== 제주 ? "3,000원" : "5,000원") */}
                         </span>
                       </h5>
-
                       <h4 className="grand-totall-title">
-                        Grand Total{" "}
+                        총 결제금액{" "}
                         <span>
-                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                          {currency.currencySymbol + cartTotalPrice}
                         </span>
                       </h4>
                       <Link to={process.env.PUBLIC_URL + "/checkout"}>

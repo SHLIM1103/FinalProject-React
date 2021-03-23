@@ -34,56 +34,9 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
             <ul className="mega-menu">
               <li>
                 <ul>
-                  <li className="mega-menu-title">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                      {strings["shop_layout"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                      {strings["shop_grid_standard"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-filter"}>
-                      {strings["shop_grid_filter"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-two-column"}>
-                      {strings["shop_grid_two_column"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}>
-                      {strings["shop_grid_no_sidebar"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-full-width"}>
-                      {strings["shop_grid_full_width"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
-                    >
-                      {strings["shop_grid_right_sidebar"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-list-standard"}>
-                      {strings["shop_list_standard"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-list-full-width"}>
-                      {strings["shop_list_full_width"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-list-two-column"}>
-                      {strings["shop_list_two_column"]}
+                  <li li className="mega-menu-title">
+                    <Link to={process.env.PUBLIC_URL + "/product-all"}>
+                      {strings["Product List"]}
                     </Link>
                   </li>
                 </ul>

@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { useToasts } from "react-toast-notifications";
-import ProductModal from "./ProductModal";
+import PropTypes from "prop-types"
+import React, { Fragment, useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useToasts } from "react-toast-notifications"
+import ProductModal from "./ProductModal"
 
 const ProductGridListSingle = ({
   product,
@@ -54,24 +54,31 @@ const ProductGridListSingle = ({
                 </button>
               </div>
               <div className="pro-same-action pro-cart">
-                {product.prdInv > 0 ? (
+              {product.affiliateLink ? (
+                  <a
+                    href={product.affiliateLink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {" "}
+                    Buy now{" "}
+                  </a>
+                ) : product.variation && product.variation.length >= 1 ? (
+                  <Link to={`${process.env.PUBLIC_URL}/product/${product.prdId}`}>
+                    Select Option
+                  </Link>
+                ) : product.prdInv && product.prdInv > 0 ? (
                   <button
                     onClick={() => addToCart(product, addToast)}
                     className={
-                      cartItem !== undefined && cartItem.quantity > 0
-                        ? "active"
-                        : ""
+                      cartItem !== "active"
                     }
-                    disabled={cartItem !== undefined && cartItem.quantity > 0}
-                    title={
-                      cartItem !== undefined ? "Added to cart" : "Add to cart"
-                    }
+                    
+                    title={"Added to cart"}
                   >
                     {" "}
                     <i className="pe-7s-cart"></i>{" "}
-                    {cartItem !== undefined && cartItem.quantity > 0
-                      ? "Added"
-                      : "Add to cart"}
+                    {"Add to cart"}
                   </button>
                 ) : (
                   <button disabled className="active">

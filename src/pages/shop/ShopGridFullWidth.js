@@ -27,6 +27,10 @@ const ShopGridFullWidth = ({location}) => {
     useEffect(() => {
         axios.get("http://localhost:8080/product/all", )
         .then((resp) => {
+            const arr = resp.data
+            for(let i = 0 ; i < 10 ; i++) {
+                console.log(arr[i].prdName + "\n")
+            }
           setProducts(resp.data)
         })
         .catch((err) => {

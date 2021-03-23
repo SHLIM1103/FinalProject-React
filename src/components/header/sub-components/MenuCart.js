@@ -15,7 +15,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
               return (
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">
-                    <Link to={process.env.PUBLIC_URL + "/product/" + single.prdId}>
+                    <Link to={process.env.PUBLIC_URL + "/product/" + single.id}>
                       <img
                         alt=""
                         src={process.env.PUBLIC_URL + single.prdImg}
@@ -33,7 +33,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                       </Link>
                     </h4>
                     <h6>Qty: {single.quantity}</h6>
-                    <span> {currency.currencySymbol + single.prdPrice}}
+                    <span> {currency.currencySymbol + single.prdPrice}
                     </span>
                   </div>
                   <div className="shopping-cart-delete">
@@ -49,7 +49,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
             <h4>
               Total :{" "}
               <span className="shop-total">
-                {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                {currency.currencySymbol + cartTotalPrice}
               </span>
             </h4>
           </div>

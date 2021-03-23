@@ -18,11 +18,17 @@ const ProductGrid = ({
   sliderClassName,
   spaceBottomClass
 }) => {
+  /*
+  const test = (e) => {
+    e.preventDefault()
+    alert(`!`)
+  } */
   return (
     <Fragment>
       {products.map(product => {
         return (
           <ProductGridListSingle
+            /*onClick = {test} */
             sliderClassName={sliderClassName}
             spaceBottomClass={spaceBottomClass}
             product={product}

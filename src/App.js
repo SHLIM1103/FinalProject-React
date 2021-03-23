@@ -87,7 +87,7 @@ const App = (props) => {
 
                 {/* Shop pages */}
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
+                  path={process.env.PUBLIC_URL + "/product-all"}
                   component={ShopGridFullWidth}
                 />
 
@@ -95,11 +95,11 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/product/:id"}
                   render={(routeProps) => (
-                    <Product {...routeProps} key={routeProps.match.params.id} />
+                    <Product {...routeProps} key={routeProps.match.params.prdId} />
                   )}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/product-sticky/:id"}
+                  path={process.env.PUBLIC_URL + "/product-sticky/:prdId"}
                   component={ProductSticky}
                 />
                  <Route
