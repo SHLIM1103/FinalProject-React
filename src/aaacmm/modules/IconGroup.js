@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import MenuCart from "./header-components/MenuCart";
-import { deleteFromCart } from "../../aaaredux/actions/cartActions";
+import PropTypes from "prop-types"
+import React from "react"
+import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import MenuCart from "./header-components/MenuCart"
+import { deleteFromCart } from "../../aaaredux/actions/cartActions"
 
 const IconGroup = ({
   currency,
@@ -14,15 +14,15 @@ const IconGroup = ({
   iconWhiteClass
 }) => {
   const handleClick = e => {
-    e.currentTarget.nextSibling.classList.toggle("active");
-  };
+    e.currentTarget.nextSibling.classList.toggle("active")
+  }
 
   const triggerMobileMenu = () => {
     const offcanvasMobileMenu = document.querySelector(
       "#offcanvas-mobile-menu"
-    );
-    offcanvasMobileMenu.classList.add("active");
-  };
+    )
+    offcanvasMobileMenu.classList.add("active")
+  }
 
   return (
     <div
@@ -113,8 +113,8 @@ const IconGroup = ({
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 IconGroup.propTypes = {
   cartData: PropTypes.array,
@@ -123,7 +123,7 @@ IconGroup.propTypes = {
   iconWhiteClass: PropTypes.string,
   deleteFromCart: PropTypes.func,
   wishlistData: PropTypes.array
-};
+}
 
 const mapStateToProps = state => {
   return {
@@ -131,15 +131,15 @@ const mapStateToProps = state => {
     cartData: state.cartData,
     wishlistData: state.wishlistData,
     compareData: state.compareData
-  };
-};
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     deleteFromCart: (item, addToast) => {
-      dispatch(deleteFromCart(item, addToast));
+      dispatch(deleteFromCart(item, addToast))
     }
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(IconGroup);
+export default connect(mapStateToProps, mapDispatchToProps)(IconGroup)

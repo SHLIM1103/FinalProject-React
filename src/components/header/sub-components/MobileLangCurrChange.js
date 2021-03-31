@@ -52,7 +52,7 @@ const MobileLangCurrChange = ({
             closeMobileMenu();
           }}
         >
-          <option value="USD">USD</option>
+          <option value="KRW">KRW</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>
         </select>

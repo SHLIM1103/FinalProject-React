@@ -1,19 +1,35 @@
 [
     {
       "id": 1,
-      "title": "Stylish",
-      "subtitle": "Male Clothes",
-      "text": "30% off Summer Vacation",
-      "image": "/assets/img/slider/slider-2.jpg",
-      "url": "/shop-grid-standard"
+      "title": "ZER0 SHOP",
+      "subtitle": "ZERO WASTE WORLD",
+      "text": "JOIN US ?",
+      "image": "/assets/img/slider/main-01.png",
+      "url": "/product-all"
     },
     {
       "id": 2,
-      "title": "Stylish",
-      "subtitle": "Female Clothes",
-      "text": "30% off Summer Vacation",
-      "image": "/assets/img/slider/slider-2-2.jpg",
-      "url": "/shop-grid-standard"
+      "title": "ZER0 SHOP",
+      "subtitle": "ZERO WASTE WORLD",
+      "text": "JOIN US ?",
+      "image": "/assets/img/slider/main-02.png",
+      "url": "/product-all"
+    },
+    {
+      "id": 3,
+      "title": "ZER0 SHOP",
+      "subtitle": "ZERO WASTE WORLD",
+      "text": "JOIN US ?",
+      "image": "/assets/img/slider/main-03.png",
+      "url": "/product-all"
+    },
+    {
+      "id": 3,
+      "title": "ZER0 SHOP",
+      "subtitle": "",
+      "text": "",
+      "image": "/assets/img/slider/main-04.png",
+      "url": "/product-all"
     }
   ]
   

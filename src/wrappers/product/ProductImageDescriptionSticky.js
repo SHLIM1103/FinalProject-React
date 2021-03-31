@@ -1,70 +1,37 @@
 import PropTypes from "prop-types";
-import React from "react";
-import { connect } from "react-redux";
-import { useToasts } from "react-toast-notifications";
-import Sticky from "react-sticky-el";
-import { getDiscountPrice } from "../../helpers/product";
-import ProductDescriptionInfo from "../../components/product/ProductDescriptionInfo";
-import ProductImageGallerySticky from "../../components/product/ProductImageGallerySticky";
+import React, { useState, useEffect } from "react";
+import ProductImageDescriptionStickyComp from './ProductImageDescriptionStickyComp'
+import axios from 'axios'
 
-const ProductImageDescriptionSticky = ({
-  spaceTopClass,
-  spaceBottomClass,
-  product,
-  currency,
-  cartItems,
-  wishlistItems,
-  compareItems
-}) => {
-  const wishlistItem = wishlistItems.filter(
-    wishlistItem => wishlistItem.id === product.id
-  )[0];
-  const compareItem = compareItems.filter(
-    compareItem => compareItem.id === product.id
-  )[0];
-  const { addToast } = useToasts();
+const ProductImageDescriptionSticky = () => {
+  const [products, setProducts] = useState([])
 
-  const discountedPrice = getDiscountPrice(product.price, product.discount);
-  const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
-  const finalDiscountedPrice = +(
-    discountedPrice * currency.currencyRate
-  ).toFixed(2);
+  useEffect(() => {
+    axios({
+      url: `http://localhost:8080/products/product-number/` + localStorage.getItem('prdNo'),
+      methos: `get`,
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: {}
+    })
+    .then((res) => {
+      setProducts(res.data)
+    })
+    .catch((err) => {
+      console.log(`error !`)
+      throw err
+    })
+  }, [])
 
-  return (
-    <div
-      className={`shop-area ${spaceTopClass ? spaceTopClass : ""} ${
-        spaceBottomClass ? spaceBottomClass : ""
-      }`}
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6 col-md-6">
-            {/* product image gallery */}
-            <ProductImageGallerySticky product={product} />
-          </div>
-          <div className="col-lg-6 col-md-6">
-            <Sticky
-              boundaryElement=".shop-area"
-              style={{ position: "relative" }}
-            >
-              {/* product description info */}
-              <ProductDescriptionInfo
-                product={product}
-                discountedPrice={discountedPrice}
-                currency={currency}
-                finalDiscountedPrice={finalDiscountedPrice}
-                finalProductPrice={finalProductPrice}
-                cartItems={cartItems}
-                wishlistItem={wishlistItem}
-                compareItem={compareItem}
-                addToast={addToast}
-              />
-            </Sticky>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return (<>
+    {products.map((product => {
+      return(
+        <ProductImageDescriptionStickyComp product={product} key={product.prdNo} />
+      )
+    }))}
+  </>)
 };
 
 ProductImageDescriptionSticky.propTypes = {
@@ -77,13 +44,4 @@ ProductImageDescriptionSticky.propTypes = {
   wishlistItems: PropTypes.array
 };
 
-const mapStateToProps = state => {
-  return {
-    currency: state.currencyData,
-    cartItems: state.cartData,
-    wishlistItems: state.wishlistData,
-    compareItems: state.compareData
-  };
-};
-
-export default connect(mapStateToProps)(ProductImageDescriptionSticky);
+export default ProductImageDescriptionSticky

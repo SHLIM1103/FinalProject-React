@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import PropTypes from "prop-types"
+import React, { Fragment } from "react"
+import Header from "./Header"
+import Footer from "./Footer"
 
 export const Layout = ({
   children,
@@ -26,8 +26,8 @@ export const Layout = ({
       />
     </Fragment>
    
-  );
-};
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.any,
@@ -35,6 +35,6 @@ Layout.propTypes = {
   headerPaddingClass: PropTypes.string,
   headerPositionClass: PropTypes.string,
   headerTop: PropTypes.string
-};
+}
 
-export default Layout;
+export default Layout

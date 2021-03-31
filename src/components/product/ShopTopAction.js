@@ -15,9 +15,9 @@ const ShopTopAction = ({
           <select
             onChange={e => getFilterSortParams("filterSort", e.target.value)}
           >
-            <option value="default">Default</option>
-            <option value="priceHighToLow">Price - High to Low</option>
-            <option value="priceLowToHigh">Price - Low to High</option>
+            <option value="default">신상품순</option>
+            <option value="priceHighToLow">높은 가격순</option>
+            <option value="priceLowToHigh">낮은 가격순</option>
           </select>
         </div>
         <p>

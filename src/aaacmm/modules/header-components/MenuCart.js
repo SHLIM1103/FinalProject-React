@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { useToasts } from "react-toast-notifications";
+import PropTypes from "prop-types"
+import React, { Fragment } from "react"
+import { Link } from "react-router-dom"
+import { useToasts } from "react-toast-notifications"
 
 const MenuCart = ({ cartData, currency, deleteFromCart }) => {
-  let cartTotalPrice = 0;
-  const { addToast } = useToasts();
+  let cartTotalPrice = 0
+  const { addToast } = useToasts()
   return (
     <div className="shopping-cart-content">
       {cartData && cartData.length > 0 ? (
@@ -15,7 +15,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
               return (
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">
-                    <Link to={process.env.PUBLIC_URL + "/product/" + single.id}>
+                    <Link to={process.env.PUBLIC_URL + "/product-detail/" + single.prdNo}>
                       <img
                         alt=""
                         src={process.env.PUBLIC_URL + single.prdImg}
@@ -26,14 +26,14 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                   <div className="shopping-cart-title">
                     <h4>
                       <Link
-                        to={process.env.PUBLIC_URL + "/product/" + single.prdId}
+                        to={process.env.PUBLIC_URL + "/product-detail/" + single.prdNo}
                       >
                         {" "}
                         {single.prdName}{" "}
                       </Link>
                     </h4>
                     <h6>Qty: {single.quantity}</h6>
-                    <span> {currency.currencySymbol + single.prdPrice}
+                    <span> {currency.currencySymbol + single.prdPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
                   </div>
                   <div className="shopping-cart-delete">
@@ -42,14 +42,14 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                     </button>
                   </div>
                 </li>
-              );
+              )
             })}
           </ul>
           <div className="shopping-cart-total">
             <h4>
               Total :{" "}
               <span className="shop-total">
-                {currency.currencySymbol }
+                {currency.currencySymbol + cartTotalPrice.toFixed(2)}
               </span>
             </h4>
           </div>
@@ -66,16 +66,16 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
           </div>
         </Fragment>
       ) : (
-        <p className="text-center">No items added to cart</p>
+        <p className="text-center">장바구니에 담은 제품이 없습니다!</p>
       )}
     </div>
-  );
-};
+  )
+}
 
 MenuCart.propTypes = {
   cartData: PropTypes.array,
   currency: PropTypes.object,
   deleteFromCart: PropTypes.func
-};
+}
 
-export default MenuCart;
+export default MenuCart

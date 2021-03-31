@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { multilanguage, changeLanguage } from "redux-multilanguage";
-import { connect } from "react-redux";
-import { setCurrency } from "../../../aaaredux/actions/currencyActions";
+import PropTypes from "prop-types"
+import React from "react"
+import { multilanguage, changeLanguage } from "redux-multilanguage"
+import { connect } from "react-redux"
+import { setCurrency } from "../../../aaaredux/actions/currencyActions"
 
 const MobileLangCurrChange = ({
   currency,
@@ -11,21 +11,21 @@ const MobileLangCurrChange = ({
   dispatch
 }) => {
   const changeLanguageTrigger = e => {
-    const languageCode = e.target.value;
-    dispatch(changeLanguage(languageCode));
-  };
+    const languageCode = e.target.value
+    dispatch(changeLanguage(languageCode))
+  }
 
   const setCurrencyTrigger = e => {
-    const currencyName = e.target.value;
-    setCurrency(currencyName);
-  };
+    const currencyName = e.target.value
+    setCurrency(currencyName)
+  }
 
   const closeMobileMenu = () => {
     const offcanvasMobileMenu = document.querySelector(
       "#offcanvas-mobile-menu"
-    );
-    offcanvasMobileMenu.classList.remove("active");
-  };
+    )
+    offcanvasMobileMenu.classList.remove("active")
+  }
 
   return (
     <div className="mobile-menu-middle">
@@ -34,8 +34,8 @@ const MobileLangCurrChange = ({
         <select
           value={currentLanguageCode}
           onChange={e => {
-            changeLanguageTrigger(e);
-            closeMobileMenu();
+            changeLanguageTrigger(e)
+            closeMobileMenu()
           }}
         >
           <option value="en">English</option>
@@ -48,41 +48,41 @@ const MobileLangCurrChange = ({
         <select
           value={currency.currencyName}
           onChange={e => {
-            setCurrencyTrigger(e);
-            closeMobileMenu();
+            setCurrencyTrigger(e)
+            closeMobileMenu()
           }}
         >
-          <option value="USD">USD</option>
+          <option value="KRW">KRW</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>
         </select>
       </div>
     </div>
-  );
-};
+  )
+}
 
 MobileLangCurrChange.propTypes = {
   setCurrency: PropTypes.func,
   currency: PropTypes.object,
   currentLanguageCode: PropTypes.string,
   dispatch: PropTypes.func
-};
+}
 
 const mapStateToProps = state => {
   return {
     currency: state.currencyData
-  };
-};
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     setCurrency: currencyName => {
-      dispatch(setCurrency(currencyName));
+      dispatch(setCurrency(currencyName))
     }
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(multilanguage(MobileLangCurrChange));
+)(multilanguage(MobileLangCurrChange))

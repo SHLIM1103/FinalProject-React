@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from "prop-types"
+import React from "react"
 
 const FeatureIconSingle = ({ data, spaceBottomClass, textAlignClass }) => {
   return (
@@ -20,13 +20,13 @@ const FeatureIconSingle = ({ data, spaceBottomClass, textAlignClass }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 FeatureIconSingle.propTypes = {
   data: PropTypes.object,
   spaceBottomClass: PropTypes.string,
   textAlignClass: PropTypes.string
-};
+}
 
-export default FeatureIconSingle;
+export default FeatureIconSingle

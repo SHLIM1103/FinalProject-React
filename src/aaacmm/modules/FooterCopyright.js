@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types"
+import React from "react"
+import { Link } from "react-router-dom"
 
 const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
   return (
@@ -22,13 +22,13 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
         .<br /> All Rights Reserved
       </p>
     </div>
-  );
-};
+  )
+}
 
 FooterCopyright.propTypes = {
   footerLogo: PropTypes.string,
   spaceBottomClass: PropTypes.string,
   colorClass: PropTypes.string
-};
+}
 
-export default FooterCopyright;
+export default FooterCopyright

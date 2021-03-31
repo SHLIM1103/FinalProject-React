@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
-import { multilanguage } from "redux-multilanguage";
+import PropTypes from "prop-types"
+import React from "react"
+import { Link } from "react-router-dom"
+import { multilanguage } from "redux-multilanguage"
 
 const MobileNavMenu = ({ strings }) => {
   return (
@@ -426,11 +426,11 @@ const MobileNavMenu = ({ strings }) => {
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
 MobileNavMenu.propTypes = {
   strings: PropTypes.object
-};
+}
 
-export default multilanguage(MobileNavMenu);
+export default multilanguage(MobileNavMenu)

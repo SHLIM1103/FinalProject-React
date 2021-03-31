@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from "prop-types"
+import React from "react"
 
 const SectionTitle = ({ titleText, spaceBottomClass }) => {
   return (
@@ -8,12 +8,12 @@ const SectionTitle = ({ titleText, spaceBottomClass }) => {
     >
       <h4>{titleText}</h4>
     </div>
-  );
-};
+  )
+}
 
 SectionTitle.propTypes = {
   spaceBottomClass: PropTypes.string,
   titleText: PropTypes.string
-};
+}
 
-export default SectionTitle;
+export default SectionTitle

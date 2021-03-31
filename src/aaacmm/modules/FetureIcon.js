@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import React from "react";
-import featureIconData from "./feture-icon.json";
-import FeatureIconSingle from "./FeatureIconSingle";
+import PropTypes from "prop-types"
+import React from "react"
+import featureIconData from "./feture-icon.json"
+import FeatureIconSingle from "./FeatureIconSingle"
 
 const FeatureIcon = ({ spaceTopClass, spaceBottomClass }) => {
   return (
@@ -21,17 +21,17 @@ const FeatureIcon = ({ spaceTopClass, spaceBottomClass }) => {
                   textAlignClass="text-center"
                   key={key}
                 />
-              );
+              )
             })}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 FeatureIcon.propTypes = {
   spaceBottomClass: PropTypes.string,
   spaceTopClass: PropTypes.string
-};
+}
 
-export default FeatureIcon;
+export default FeatureIcon

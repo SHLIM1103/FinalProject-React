@@ -10,8 +10,9 @@ import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
+import ShopGridStandardComp from './ShopGridStandardComp'
 
-const ShopGridStandard = ({location, products}) => {
+const ShopGridStandard = ({ location }) => {
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
@@ -22,8 +23,29 @@ const ShopGridStandard = ({location, products}) => {
     const [currentData, setCurrentData] = useState([]);
     const [sortedProducts, setSortedProducts] = useState([]);
 
+    const [products, setProducts] = useState([])
+
     const pageLimit = 15;
     const {pathname} = location;
+
+    useEffect(() => {
+        axios({
+          url: `http://localhost:8080/products/product-number/` + localStorage.getItem('prdNo'),
+          methos: `get`,
+          headers: {
+            'Content-Type'  : 'application/json',
+            'Authorization' : 'JWT fefege..'
+          },
+          data: {}
+        })
+        .then((res) => {
+          setProducts(res.data)
+        })
+        .catch((err) => {
+          console.log(`error !`)
+          throw err
+        })
+    }, [])
 
     const getLayout = (layout) => {
         setLayout(layout)
@@ -57,43 +79,9 @@ const ShopGridStandard = ({location, products}) => {
             <BreadcrumbsItem to={process.env.PUBLIC_URL + '/'}>Home</BreadcrumbsItem>
             <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>Shop</BreadcrumbsItem>
 
-            <LayoutOne headerTop="visible">
-                {/* breadcrumb */}
-                <Breadcrumb />
-
-                <div className="shop-area pt-95 pb-100">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-3 order-2 order-lg-1">
-                                {/* shop sidebar */}
-                                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30"/>
-                            </div>
-                            <div className="col-lg-9 order-1 order-lg-2">
-                                {/* shop topbar default */}
-                                <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
-
-                                {/* shop page content default */}
-                                <ShopProducts layout={layout} products={currentData} />
-
-                                {/* shop product pagination */}
-                                <div className="pro-pagination-style text-center mt-30">
-                                    <Paginator
-                                        totalRecords={sortedProducts.length}
-                                        pageLimit={pageLimit}
-                                        pageNeighbours={2}
-                                        setOffset={setOffset}
-                                        currentPage={currentPage}
-                                        setCurrentPage={setCurrentPage}
-                                        pageContainerClass="mb-0 mt-0"
-                                        pagePrevText="«"
-                                        pageNextText="»"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LayoutOne>
+            {products.map((product => {
+                <ShopGridStandardComp product={product} key={product.prdNo} />
+            }))}
         </Fragment>
     )
 }
@@ -103,10 +91,4 @@ ShopGridStandard.propTypes = {
   products: PropTypes.array
 }
 
-const mapStateToProps = state => {
-    return{
-        products: state.productData.products
-    }
-}
-
-export default connect(mapStateToProps)(ShopGridStandard);
+export default ShopGridStandard

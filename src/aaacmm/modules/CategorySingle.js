@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types"
+import React from "react"
+import { Link } from "react-router-dom"
 
 const CategorySingle = ({ data, sliderClass }) => {
   return (
@@ -17,12 +17,12 @@ const CategorySingle = ({ data, sliderClass }) => {
         </h4>
       </div>
     </div>
-  );
-};
+  )
+}
 
 CategorySingle.propTypes = {
   data: PropTypes.object,
   sliderClass: PropTypes.string
-};
+}
 
-export default CategorySingle;
+export default CategorySingle

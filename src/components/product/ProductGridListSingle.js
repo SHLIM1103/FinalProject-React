@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import React, { Fragment, useState, useEffect } from "react"
+import React, { Fragment, useState } from "react"
 import { Link } from "react-router-dom"
 import { useToasts } from "react-toast-notifications"
 import ProductModal from "./ProductModal"
@@ -30,11 +30,12 @@ const ProductGridListSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.prdId}>
+            <Link to={process.env.PUBLIC_URL + "/product-detail/" + product.prdNo}>
               <img
                 className="default-img"
                 src={process.env.PUBLIC_URL + product.prdImg}
                 alt=""
+                onClick={() => localStorage.setItem('prdNo', JSON.stringify(product.prdNo))}
               />
             </Link>
 
@@ -54,17 +55,8 @@ const ProductGridListSingle = ({
                 </button>
               </div>
               <div className="pro-same-action pro-cart">
-              {product.affiliateLink ? (
-                  <a
-                    href={product.affiliateLink}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {" "}
-                    Buy now{" "}
-                  </a>
-                ) : product.variation && product.variation.length >= 1 ? (
-                  <Link to={`${process.env.PUBLIC_URL}/product/${product.prdId}`}>
+              {product.variation && product.variation.length >= 1 ? (
+                  <Link to={`${process.env.PUBLIC_URL}/product-detail/${product.prdNo}`}>
                     Select Option
                   </Link>
                 ) : product.prdInv && product.prdInv > 0 ? (
@@ -95,12 +87,13 @@ const ProductGridListSingle = ({
           </div>
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.prdId}>
+              <Link to={process.env.PUBLIC_URL + "/product-detail/" + product.prdNo} 
+                onClick={() => localStorage.setItem('prdNo', JSON.stringify(product.prdNo))}>
                 {product.prdName}
               </Link>
             </h3>
             <div className="product-price">
-                <span>{currency.currencySymbol + product.prdPrice} </span>
+                <span>{currency.currencySymbol + product.prdPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </span>
             </div>
           </div>
         </div>
@@ -109,11 +102,12 @@ const ProductGridListSingle = ({
             <div className="col-xl-4 col-md-5 col-sm-6">
               <div className="product-list-image-wrap">
                 <div className="product-img">
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.prdId}>
+                  <Link to={process.env.PUBLIC_URL + "/product-detail/" + product.prdNo}>
                     <img
                       className="default-img img-fluid"
                       src={process.env.PUBLIC_URL + product.prdImg}
                       alt=""
+                      onClick={() => localStorage.setItem('prdNo', JSON.stringify(product.prdNo))}
                     />
                   </Link>
                 </div>
@@ -122,7 +116,8 @@ const ProductGridListSingle = ({
             <div className="col-xl-8 col-md-7 col-sm-6">
               <div className="shop-list-content">
                 <h3>
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.prdId}>
+                  <Link to={process.env.PUBLIC_URL + "/product-detail/" + product.prdNo}
+                  onClick={() => localStorage.setItem('prdNo', JSON.stringify(product.prdNo))}>
                     {product.prdName}
                   </Link>
                 </h3>

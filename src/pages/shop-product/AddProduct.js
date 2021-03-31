@@ -7,7 +7,7 @@ import AddPrd from '../../wrappers/product/AddPrd'
 import LayoutOne from "../../layouts/LayoutOne"
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb"
 
-const AddProduct = ({ location, product }) => {
+const AddProduct = ({ location }) => {
   const { pathname } = location
 
   return (
@@ -22,7 +22,6 @@ const AddProduct = ({ location, product }) => {
         {/* breadcrumb */}
         <Breadcrumb />
         
-        {/*<AddPrd/>*/}
         <AddPrd/>
         
       </LayoutOne>

@@ -1,31 +1,31 @@
 [
     {
       "id": "1",
-      "image": "/assets/img/product/hm8-pro-1.jpg",
+      "image": "/assets/img/product/living-category.png",
       "subtitle": "2 Products",
       "title": "Living",
-      "link": "/shop-grid-standard"
+      "link": "/product-all"
     },
     {
       "id": "2",
-      "image": "/assets/img/product/hm8-pro-2.jpg",
+      "image": "/assets/img/product/kitchen-category.png",
       "subtitle": "3 Products",
       "title": "Kitchen",
-      "link": "/shop-grid-standard"
+      "link": "/product-all"
     },
     {
       "id": "3",
-      "image": "/assets/img/product/hm8-pro-3.jpg",
+      "image": "/assets/img/product/bath-category.png",
       "subtitle": "6 Products",
       "title": "Bathroom",
-      "link": "/shop-grid-standard"
+      "link": "/product-all"
     },
     {
       "id": "4",
-      "image": "/assets/img/product/hm8-pro-4.jpg",
+      "image": "/assets/img/product/stationary-category.png",
       "subtitle": "5 Products",
       "title": "Stationary",
-      "link": "/shop-grid-standard"
+      "link": "/product-all"
     }
   ]
   

@@ -59,7 +59,7 @@ const Cart = ({
                             <th>Unit Price</th>
                             <th>Qty</th>
                             <th>Subtotal</th>
-                            <th>action</th>
+                            <th>delete</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -71,8 +71,8 @@ const Cart = ({
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
-                                      cartItem.prdId
+                                      "/product-detail/" +
+                                      cartItem.prdNo
                                     }
                                   >
                                     <img
@@ -90,8 +90,8 @@ const Cart = ({
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
-                                      cartItem.prdId
+                                      "/product-detail/" +
+                                      cartItem.prdNo
                                     }
                                   >
                                     {cartItem.prdName}
@@ -100,7 +100,7 @@ const Cart = ({
 
                                 <td className="product-price-cart">
                                     <span className="amount">
-                                      {currency.currencySymbol + cartItem.prdPrice}
+                                      {currency.currencySymbol + cartItem.prdPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                     </span>
                                 </td>
 
@@ -141,7 +141,7 @@ const Cart = ({
                                   </div>
                                 </td>
                                 <td className="product-subtotal">
-                                  {cartItem.prdPrice * cartItem.quantity}
+                                  {currency.currencySymbol + (cartItem.quantity * cartItem.prdPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                 </td>
 
                                 <td className="product-remove">
@@ -235,14 +235,16 @@ const Cart = ({
                         <h5>
                           배송료{" "}
                         <span>
-                          {"3,000원"}
-                          {/* (usrCity !== 제주 ? "3,000원" : "5,000원") */}
+                          {cartTotalPrice < 50000 ? "2,500원" : "무료배송"}
+                          {/* (usrCity !== 제주 ? "2,500원" : "5,000원") */}
                         </span>
                       </h5>
                       <h4 className="grand-totall-title">
                         총 결제금액{" "}
                         <span>
-                          {currency.currencySymbol + cartTotalPrice}
+                          {cartTotalPrice < 50000 ? currency.currencySymbol + (cartTotalPrice + 2500).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") 
+                            : currency.currencySymbol + cartTotalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          {}
                         </span>
                       </h4>
                       <Link to={process.env.PUBLIC_URL + "/checkout"}>
@@ -261,7 +263,7 @@ const Cart = ({
                     </div>
                     <div className="item-empty-area__text">
                       No items found in cart <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/product-all"}>
                         Shop Now
                       </Link>
                     </div>

@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
-import React from "react";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
+import PropTypes from "prop-types"
+import React from "react"
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 const CustomForm = ({ status, message, onValidated }) => {
-  let email;
+  let email
   const submit = () => {
     email &&
       email.value.indexOf("@") > -1 &&
       onValidated({
         EMAIL: email.value
-      });
+      })
 
-    let emailInput = document.getElementById("mc-form-email");
-    emailInput.value = "";
-  };
+    let emailInput = document.getElementById("mc-form-email")
+    emailInput.value = ""
+  }
 
   return (
     <div className="subscribe-form">
@@ -50,8 +50,8 @@ const CustomForm = ({ status, message, onValidated }) => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
 const SubscribeEmail = ({ mailchimpUrl }) => {
   return (
@@ -67,11 +67,11 @@ const SubscribeEmail = ({ mailchimpUrl }) => {
         )}
       />
     </div>
-  );
-};
+  )
+}
 
 SubscribeEmail.propTypes = {
   mailchimpUrl: PropTypes.string
-};
+}
 
-export default SubscribeEmail;
+export default SubscribeEmail

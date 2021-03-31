@@ -6,7 +6,7 @@ import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import ProductGridListSingle from "../../components/product/ProductGridListSingle";
 
-const ProductGrid = ({
+const ProductGridList = ({
   products,
   currency,
   addToCart,
@@ -18,17 +18,11 @@ const ProductGrid = ({
   sliderClassName,
   spaceBottomClass
 }) => {
-  /*
-  const test = (e) => {
-    e.preventDefault()
-    alert(`!`)
-  } */
   return (
     <Fragment>
       {products.map(product => {
         return (
           <ProductGridListSingle
-            /*onClick = {test} */
             sliderClassName={sliderClassName}
             spaceBottomClass={spaceBottomClass}
             product={product}
@@ -37,19 +31,19 @@ const ProductGrid = ({
             addToWishlist={addToWishlist}
             addToCompare={addToCompare}
             cartItem={
-              cartItems.filter(cartItem => cartItem.id === product.prdId)[0]
+              cartItems.filter(cartItem => cartItem.id === product.prdNo)[0]
             }
             wishlistItem={
               wishlistItems.filter(
-                wishlistItem => wishlistItem.id === product.prdId
+                wishlistItem => wishlistItem.id === product.prdNo
               )[0]
             }
             compareItem={
               compareItems.filter(
-                compareItem => compareItem.id === product.prdId
+                compareItem => compareItem.id === product.prdNo
               )[0]
             }
-            key={product.prdId}
+            key={product.prdNo}
           />
         );
       })}
@@ -57,7 +51,7 @@ const ProductGrid = ({
   );
 };
 
-ProductGrid.propTypes = {
+ProductGridList.propTypes = {
   addToCart: PropTypes.func,
   addToCompare: PropTypes.func,
   addToWishlist: PropTypes.func,
@@ -107,4 +101,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductGridList);

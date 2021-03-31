@@ -113,7 +113,7 @@
 
         text-transform: uppercase;
 
-        color: #010101;
+        color: #ffffff;
         border: 1px solid #333;
         @media #{$md-layout} {
           padding: 15px 35px 17px;
@@ -123,7 +123,7 @@
         }
         &:hover {
           color: #fff;
-          border: 1px solid $theme-color;
+          border: 1px solid #333;
         }
       }
     }
@@ -482,7 +482,7 @@
     margin-bottom: 0;
     margin-left: 135px;
 
-    color: #000000;
+    color: #ffffff;
     @media #{$xs-layout} {
       margin-left: 0;
     }
@@ -499,7 +499,7 @@
 
       content: "";
 
-      background-color: #000000;
+      background-color: #ffffff;
       @media #{$xs-layout} {
         display: none;
       }
@@ -558,7 +558,7 @@
       text-transform: uppercase;
 
       color: #010101;
-      border: 1px solid #333;
+      border: 1px solid $theme-color;
       background-color: #eeeff1;
       @media #{$xs-layout} {
         padding: 14px 30px 16px;
@@ -793,7 +793,7 @@
 
       content: "";
 
-      background-color: #000000;
+      background-color: #000;
     }
     &::after {
       position: absolute;
@@ -805,12 +805,12 @@
 
       content: "";
 
-      background-color: #000000;
+      background-color: #000;
     }
   }
   h1 {
-    font-size: 72px;
-    line-height: 56px;
+    font-size: 70px;
+    line-height: 60px;
 
     margin: 28px 0 23px;
     @media #{$lg-layout} {
@@ -829,11 +829,11 @@
     }
   }
   p {
-    font-size: 18px;
+    font-size: 25px;
 
     margin: 0 0 44px;
 
-    color: #010101;
+    color: #000;
   }
   .slider-btn {
     a {
@@ -846,8 +846,8 @@
 
       text-transform: uppercase;
 
-      color: #010101;
-      border: 1px solid #333;
+      color: #000;
+      border: 2px solid #333;
       &:hover {
         color: #fff;
         border: 1px solid $theme-color;
@@ -2752,7 +2752,7 @@
       font-weight: 600;
       line-height: 1.4;
 
-      color: #000;
+      color: #fff;
 
 
       @media #{$lg-layout,
@@ -2776,7 +2776,7 @@
 
       margin-bottom: 50px;
 
-      color: #000;
+      color: #ffffff;
 
       @media #{$xxs-layout} {
         font-size: 18px;
@@ -2791,8 +2791,8 @@
 
       padding: 10px 20px;
 
-      color: #000;
-      border: 1px solid #000;
+      color: #fff;
+      border: 1px solid #ffffff;
       border-radius: 2px;
       &:hover {
         color: #fff;
@@ -2818,7 +2818,7 @@
 
     margin: 12px 0 50px;
 
-    color: #010101;
+    color: #ffffff;
     @media #{$lg-layout} {
       font-size: 60px;
       line-height: 80px;

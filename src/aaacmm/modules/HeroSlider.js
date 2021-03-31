@@ -1,7 +1,7 @@
-import React from "react";
-import Swiper from "react-id-swiper";
-import sliderData from "./hero-slider.json";
-import HeroSliderSingle from "./HeroSliderSingle";
+import React from "react"
+import Swiper from "react-id-swiper"
+import sliderData from "./hero-slider.json"
+import HeroSliderSingle from "./HeroSliderSingle"
 
 const HeroSlider = () => {
   const params = {
@@ -27,7 +27,7 @@ const HeroSlider = () => {
         <i className="pe-7s-angle-right" />
       </button>
     )
-  };
+  }
   return (
     <div className="slider-area">
       <div className="slider-active nav-style-1">
@@ -40,12 +40,12 @@ const HeroSlider = () => {
                   key={key}
                   sliderClass="swiper-slide"
                 />
-              );
+              )
             })}
         </Swiper>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroSlider;
+export default HeroSlider

@@ -25,16 +25,21 @@ const ShopGridFullWidth = ({location}) => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:8080/product/all", )
-        .then((resp) => {
-            const arr = resp.data
-            for(let i = 0 ; i < 10 ; i++) {
-                console.log(arr[i].prdName + "\n")
-            }
-          setProducts(resp.data)
+        axios({
+          url: `http://localhost:8080/products/all`,
+          methos: `get`,
+          headers: {
+            'Content-Type'  : 'application/json',
+            'Authorization' : 'JWT fefege..'
+          },
+          data: {}
+        })
+        .then((res) => {
+          setProducts(res.data)
         })
         .catch((err) => {
-          throw err;
+          console.log(`error !`)
+          throw err
         })
       }, [])
 

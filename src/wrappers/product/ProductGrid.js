@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getProducts } from "../../helpers/product";
 import ProductGridSingle from "../../components/product/ProductGridSingle";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
+import axios from 'axios'
 
 const ProductGrid = ({
-  products,
   currency,
   addToCart,
   addToWishlist,
@@ -19,6 +19,26 @@ const ProductGrid = ({
   sliderClassName,
   spaceBottomClass
 }) => {
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    axios({
+      url: `http://localhost:8080/products/category/` + localStorage.getItem('ctgName'),
+      methos: `get`,
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: {}
+    })
+    .then((res) => {
+      setProducts(res.data)
+    })
+    .catch((err) => {
+      console.log(`error !`)
+      throw err
+    })
+  }, [])
+
   return (
     <Fragment>
       {products.map(product => {
@@ -32,19 +52,19 @@ const ProductGrid = ({
             addToWishlist={addToWishlist}
             addToCompare={addToCompare}
             cartItem={
-              cartItems.filter(cartItem => cartItem.id === product.id)[0]
+              cartItems.filter(cartItem => cartItem.prdNo === product.prdNo)[0]
             }
             wishlistItem={
               wishlistItems.filter(
-                wishlistItem => wishlistItem.id === product.id
+                wishlistItem => wishlistItem.prdNo === product.prdNo
               )[0]
             }
             compareItem={
               compareItems.filter(
-                compareItem => compareItem.id === product.id
+                compareItem => compareItem.prdNo === product.prdNo
               )[0]
             }
-            key={product.id}
+            key={product.prdNo}
           />
         );
       })}
@@ -68,7 +88,6 @@ ProductGrid.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     products: getProducts(
-      state.productData.products,
       ownProps.category,
       ownProps.type,
       ownProps.limit

@@ -20,8 +20,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-              {" "}
+            <Link to={process.env.PUBLIC_URL + "/product-all"}>
               {strings["shop"]}
               {sidebarMenu ? (
                 <span>
@@ -31,93 +30,18 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
                 <i className="fa fa-angle-down" />
               )}
             </Link>
-            <ul className="mega-menu">
+            <ul className="submenu">
               <li>
-                <ul>
-                  <li li className="mega-menu-title">
-                    <Link to={process.env.PUBLIC_URL + "/product-all"}>
-                      {strings["Product List"]}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <ul>
-                  <li className="mega-menu-title">
-                    <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                      {strings["product_details"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                      {strings["product_tab_bottom"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product-tab-left/1"}>
-                      {strings["product_tab_left"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product-tab-right/1"}>
-                      {strings["product_tab_right"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product-sticky/1"}>
-                      {strings["product_sticky"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product-slider/1"}>
-                      {strings["product_slider"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to={process.env.PUBLIC_URL + "/product-fixed-image/1"}
-                    >
-                      {strings["product_fixed_image"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product/8"}>
-                      {strings["product_simple"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                      {strings["product_variation"]}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/product/9"}>
-                      {strings["product_affiliate"]}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <ul>
-                  <li className="mega-menu-img">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/assets/img/banner/banner-12.png"
-                        }
-                        alt=""
-                      />
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+                  <Link to={process.env.PUBLIC_URL + "/product-all"}>
+                    {"ALL PRODUCTS"}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={process.env.PUBLIC_URL + "/product-category-01"}>
+                    {"CATEGORY 01"}
+                  </Link>
+                </li>
             </ul>
-          </li>
-          <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-              {strings["collection"]}
-            </Link>
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/"}>

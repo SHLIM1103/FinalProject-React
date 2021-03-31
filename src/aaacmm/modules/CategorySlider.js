@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React from "react";
-import Swiper from "react-id-swiper";
-import categoryData from "./category-data.json";
-import CategorySingle from "./CategorySingle";
-import SectionTitle from "./SectionTitle";
+import PropTypes from "prop-types"
+import React from "react"
+import Swiper from "react-id-swiper"
+import categoryData from "./category-data.json"
+import CategorySingle from "./CategorySingle"
+import SectionTitle from "./SectionTitle"
 
 const CategorySlider = ({ spaceTopClass, spaceBottomClass }) => {
   // swiper slider settings
@@ -25,7 +25,7 @@ const CategorySlider = ({ spaceTopClass, spaceBottomClass }) => {
         slidesPerView: 1
       }
     }
-  };
+  }
   return (
     <div
       className={`collections-area ${spaceTopClass ? spaceTopClass : ""}  ${
@@ -45,19 +45,19 @@ const CategorySlider = ({ spaceTopClass, spaceBottomClass }) => {
                       key={key}
                       sliderClass="swiper-slide"
                     />
-                  );
+                  )
                 })}
             </Swiper>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 CategorySlider.propTypes = {
   spaceBottomClass: PropTypes.string,
   spaceTopClass: PropTypes.string
-};
+}
 
-export default CategorySlider;
+export default CategorySlider

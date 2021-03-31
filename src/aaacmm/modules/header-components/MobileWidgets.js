@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const MobileWidgets = () => {
   return (
@@ -34,7 +34,7 @@ const MobileWidgets = () => {
       </div>
       {/*Off Canvas Widget Social End*/}
     </div>
-  );
-};
+  )
+}
 
-export default MobileWidgets;
+export default MobileWidgets

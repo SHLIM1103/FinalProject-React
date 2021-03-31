@@ -1,41 +1,41 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import axios from 'axios'
+import ProductImageGalleryStickyComp from './ProductImageGalleryStickyComp'
 
-const productImageGallerySticky = ({ product }) => {
-  return (
-    <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
-      {product.discount || product.new ? (
-        <div className="product-img-badges">
-          {product.discount ? (
-            <span className="pink">-{product.discount}%</span>
-          ) : (
-            ""
-          )}
-          {product.new ? <span className="purple">New</span> : ""}
-        </div>
-      ) : (
-        ""
-      )}
-      <div className="product-sticky-image mb--10">
-        {product.image &&
-          product.image.map((single, key) => {
-            return (
-              <div className="product-sticky-image__single mb-10" key={key}>
-                <img
-                  src={process.env.PUBLIC_URL + single}
-                  alt=""
-                  className="img-fluid"
-                />
-              </div>
-            );
-          })}
-      </div>
-    </div>
-  );
+const ProductImageGallerySticky = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    axios({
+      url: `http://localhost:8080/products/product-number/` + localStorage.getItem('prdNo'),
+      methos: `get`,
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: {}
+    })
+    .then((res) => {
+      setProducts(res.data)
+    })
+    .catch((err) => {
+      console.log(`error !`)
+      throw err
+    })
+  }, [])
+
+  return (<>
+    {products.map((product => {
+      return(
+        <ProductImageGalleryStickyComp product={product} key={product.prdNo} />
+      )
+    }))}
+  </>);
 };
 
-productImageGallerySticky.propTypes = {
+ProductImageGallerySticky.propTypes = {
   product: PropTypes.object
 };
 
-export default productImageGallerySticky;
+export default ProductImageGallerySticky;

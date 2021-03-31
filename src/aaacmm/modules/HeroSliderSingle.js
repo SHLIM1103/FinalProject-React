@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types"
+import React from "react"
+import { Link } from "react-router-dom"
 
 const HeroSliderSingle = ({ data, sliderClass }) => {
   return (
@@ -30,12 +30,12 @@ const HeroSliderSingle = ({ data, sliderClass }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 HeroSliderSingle.propTypes = {
   data: PropTypes.object,
   sliderClass: PropTypes.string
-};
+}
 
-export default HeroSliderSingle;
+export default HeroSliderSingle

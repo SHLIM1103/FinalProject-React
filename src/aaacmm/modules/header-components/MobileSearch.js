@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const MobileSearch = () => {
   return (
@@ -10,7 +10,7 @@ const MobileSearch = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default MobileSearch;
+export default MobileSearch

@@ -66,12 +66,12 @@ const Wishlist = ({
                         <tbody>
                           {wishlistItems.map((wishlistItem, key) => {
                             const discountedPrice = getDiscountPrice(
-                              wishlistItem.price,
+                              wishlistItem.prdPrice,
                               wishlistItem.discount
                             );
                             const finalProductPrice = (
-                              wishlistItem.price * currency.currencyRate
-                            ).toFixed(2);
+                              wishlistItem.prdPrice * currency.currencyRate
+                            );
                             const finalDiscountedPrice = (
                               discountedPrice * currency.currencyRate
                             ).toFixed(2);
@@ -84,7 +84,7 @@ const Wishlist = ({
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
+                                      "/product-detail/" +
                                       wishlistItem.id
                                     }
                                   >
@@ -92,7 +92,7 @@ const Wishlist = ({
                                       className="img-fluid"
                                       src={
                                         process.env.PUBLIC_URL +
-                                        wishlistItem.image[0]
+                                        wishlistItem.prdImg
                                       }
                                       alt=""
                                     />
@@ -107,7 +107,7 @@ const Wishlist = ({
                                       wishlistItem.id
                                     }
                                   >
-                                    {wishlistItem.name}
+                                    {wishlistItem.prdName}
                                   </Link>
                                 </td>
 
@@ -126,30 +126,14 @@ const Wishlist = ({
                                   ) : (
                                     <span className="amount">
                                       {currency.currencySymbol +
-                                        finalProductPrice}
+                                        finalProductPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                     </span>
                                   )}
                                 </td>
 
                                 <td className="product-wishlist-cart">
-                                  {wishlistItem.affiliateLink ? (
-                                    <a
-                                      href={wishlistItem.affiliateLink}
-                                      rel="noopener noreferrer"
-                                      target="_blank"
-                                    >
-                                      {" "}
-                                      Buy now{" "}
-                                    </a>
-                                  ) : wishlistItem.variation &&
-                                    wishlistItem.variation.length >= 1 ? (
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
-                                    >
-                                      Select option
-                                    </Link>
-                                  ) : wishlistItem.stock &&
-                                    wishlistItem.stock > 0 ? (
+                                  {wishlistItem.prdInv &&
+                                    wishlistItem.prdInv > 0 ? (
                                     <button
                                       onClick={() =>
                                         addToCart(wishlistItem, addToast)
@@ -205,7 +189,7 @@ const Wishlist = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                          to={process.env.PUBLIC_URL + "/product-all"}
                         >
                           Continue Shopping
                         </Link>
@@ -228,7 +212,7 @@ const Wishlist = ({
                     </div>
                     <div className="item-empty-area__text">
                       No items found in wishlist <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/product-all"}>
                         Add Items
                       </Link>
                     </div>

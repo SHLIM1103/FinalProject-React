@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { animateScroll } from "react-scroll";
-import FooterCopyright from "./FooterCopyright";
-import FooterNewsletter from "./FooterNewsletter";
+import PropTypes from "prop-types"
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { animateScroll } from "react-scroll"
+import FooterCopyright from "./FooterCopyright"
+import FooterNewsletter from "./FooterNewsletter"
 
 const Footer = ({
   backgroundColorClass,
@@ -15,24 +15,24 @@ const Footer = ({
   extraFooterClass,
   sideMenu
 }) => {
-  const [scroll, setScroll] = useState(0);
-  const [top, setTop] = useState(0);
+  const [scroll, setScroll] = useState(0)
+  const [top, setTop] = useState(0)
 
   useEffect(() => {
-    setTop(100);
-    window.addEventListener("scroll", handleScroll);
+    setTop(100)
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   const scrollToTop = () => {
-    animateScroll.scrollToTop();
-  };
+    animateScroll.scrollToTop()
+  }
 
   const handleScroll = () => {
-    setScroll(window.scrollY);
-  };
+    setScroll(window.scrollY)
+  }
 
   return (
     <footer
@@ -203,8 +203,8 @@ const Footer = ({
         <i className="fa fa-angle-double-up"></i>
       </button>
     </footer>
-  );
-};
+  )
+}
 
 Footer.propTypes = {
   backgroundColorClass: PropTypes.string,
@@ -215,6 +215,6 @@ Footer.propTypes = {
   spaceTopClass: PropTypes.string,
   spaceLeftClass: PropTypes.string,
   spaceRightClass: PropTypes.string
-};
+}
 
-export default Footer;
+export default Footer

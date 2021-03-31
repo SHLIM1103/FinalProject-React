@@ -52,7 +52,7 @@ const RelatedProductSlider = ({ spaceBottomClass, category }) => {
 };
 
 RelatedProductSlider.propTypes = {
-  category: PropTypes.string,
+  category: PropTypes.array,
   spaceBottomClass: PropTypes.string
 };
 

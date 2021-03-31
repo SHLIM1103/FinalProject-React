@@ -1,57 +1,49 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
+import ProductStickyComp from './ProductStickyComp'
+import axios from 'axios'
 import { connect } from "react-redux";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
-import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
-import ProductImageDescriptionSticky from "../../wrappers/product/ProductImageDescriptionSticky";
 
-const ProductSticky = ({ location, product }) => {
+const ProductSticky = ({ location }) => {
   const { pathname } = location;
+  const [products, setProducts] = useState([])
+  
+  useEffect(() => {
+    axios({
+      url: `http://localhost:8080/products/product-number/` + localStorage.getItem('prdNo'),
+      methos: `get`,
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: {}
+    })
+    .then((res) => {
+      setProducts(res.data)
+    })
+    .catch((err) => {
+      console.log(`error !`)
+      throw err
+    })
+  }, [])
 
-  return (
-    <Fragment>
-      <MetaTags>
-        <title>Flone | Product Page</title>
-        <meta
-          name="description"
-          content="Product page of flone react minimalist eCommerce template."
-        />
-      </MetaTags>
+  return (<Fragment>
+    <MetaTags>
+        <title>ZER0 SHOP | Product Page</title>
+    </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop Product
-      </BreadcrumbsItem>
+    <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+    <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>Shop Product</BreadcrumbsItem>
+    
+    {products.map((product => {
+      return (
+        <ProductStickyComp product={product} key={product.prdNo} />
+      )}))
+    }
 
-      <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
-
-        {/* product description with image */}
-        <ProductImageDescriptionSticky
-          spaceTopClass="mt-100"
-          spaceBottomClass="mb-100"
-          product={product}
-        />
-
-        {/* product description tab */}
-        <ProductDescriptionTab
-          spaceBottomClass="pb-90"
-          productFullDesc={product.fullDescription}
-        />
-
-        {/* related product slider */}
-        <RelatedProductSlider
-          spaceBottomClass="pb-95"
-          category={product.category[0]}
-        />
-      </LayoutOne>
-    </Fragment>
-  );
+  </Fragment>)
 };
 
 ProductSticky.propTypes = {
